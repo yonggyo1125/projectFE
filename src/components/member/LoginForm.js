@@ -1,7 +1,7 @@
 import { InputText } from '../commons/InputStyle';
 import { BigButton } from '../commons/ButtonStyle';
 import Message from '../commons/Message';
-import { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { FiLock, FiKey, FiUserPlus } from 'react-icons/fi';
@@ -42,6 +42,8 @@ const FormBox = styled.form`
 const LoginForm = ({ onSubmit, errors }) => {
   const { t } = useTranslation();
 
+  errors = errors || {};
+
   const refEmail = useRef();
 
   useEffect(() => {
@@ -56,11 +58,19 @@ const LoginForm = ({ onSubmit, errors }) => {
         placeholder={t('이메일')}
         ref={refEmail}
       />
-      <Message>이메일을 입력하세요.</Message>
+      {errors.email && errors.email.message && (
+        <Message>{errors.email.message}</Message>
+      )}
+
       <LoginText type="password" name="password" placeholder={t('비밀번호')} />
+      {errors.password && errors.password.message && (
+        <Message>{errors.password.message}</Message>
+      )}
+
       <BigButton type="submit" size="medium" className="mt5">
         {t('로그인')}
       </BigButton>
+
       <div className="links">
         <Link to="/find_id">
           <FiLock /> {t('아이디 찾기')}
@@ -72,8 +82,12 @@ const LoginForm = ({ onSubmit, errors }) => {
           <FiUserPlus /> {t('회원가입')}
         </Link>
       </div>
+
+      {errors.global && errors.global.message && (
+        <Message>{errors.global.message}</Message>
+      )}
     </FormBox>
   );
 };
 
-export default LoginForm;
+export default React.memo(LoginForm);
