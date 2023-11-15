@@ -11,4 +11,7 @@ export const BigButton = styled.button`
   width: ${({ width }) => width || '100%'};
   height: ${({ height }) => height || '40px'};
   color: ${({ fcolor }) => (fcolor ? colorNames[fcolor] : white)};
+  border: 0;
+  cursor: pointer;
+  border-radius: 3px;
 `;
