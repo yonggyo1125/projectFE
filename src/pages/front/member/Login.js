@@ -2,6 +2,7 @@ import LoginContainer from '../../../containers/member/LoginContainer';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { SubTitle } from '../../../components/commons/TitleStyle';
+import styles from '../../../styles/login.module.scss';
 
 const Login = () => {
   const { t } = useTranslation();
@@ -10,9 +11,7 @@ const Login = () => {
       <Helmet>
         <title>{t('로그인')}</title>
       </Helmet>
-      <SubTitle align="center" border_width={2}>
-        {t('로그인')}
-      </SubTitle>
+      <SubTitle align="center">{t('로그인')}</SubTitle>
       <LoginContainer />
     </>
   );
