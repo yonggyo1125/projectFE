@@ -10,7 +10,9 @@ const Login = () => {
       <Helmet>
         <title>{t('로그인')}</title>
       </Helmet>
-      <SubTitle>{t('로그인')}</SubTitle>
+      <SubTitle align="center" border_width={2}>
+        {t('로그인')}
+      </SubTitle>
       <LoginContainer />
     </>
   );
