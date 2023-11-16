@@ -1,29 +1,27 @@
 import LoginContainer from '../../containers/member/LoginContainer';
-import { UserConsumer } from '../../modules/user';
+import UserContext from '../../modules/user';
+import { useContext } from 'react';
 
 const Main = () => {
-  return (
-    <UserConsumer>
-      {({ state, action }) =>
-        state.isLogin ? (
-          <h1>메인페이지... / {state.userInfo.userNm}</h1>
-        ) : (
-          <>
-            <LoginContainer />
-            <button
-              type="button"
-              onClick={() => {
-                const { setIsLogin, setUserInfo } = action;
-                setIsLogin(true);
-                setUserInfo({ userNm: '이이름' });
-              }}
-            >
-              로그인하기
-            </button>
-          </>
-        )
-      }
-    </UserConsumer>
+  const {
+    state: { isLogin, userInfo },
+    action: { setIsLogin, setUserInfo },
+  } = useContext(UserContext);
+
+  const handleClick = () => {
+    setIsLogin(true);
+    setUserInfo({ userNm: '이이름' });
+  };
+
+  return isLogin ? (
+    <h1>메인페이지... / {userInfo.userNm}</h1>
+  ) : (
+    <>
+      <LoginContainer />
+      <button type="button" onClick={handleClick}>
+        로그인 하기
+      </button>
+    </>
   );
 };
 
