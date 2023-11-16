@@ -5,8 +5,15 @@ const Main = () => {
   console.log('Main');
   return (
     <UserConsumer>
-      {({ isLogin, userInfo }) =>
-        isLogin ? <h1>{userInfo.userNm}</h1> : <LoginContainer />
+      {({ state, actions }) =>
+        state.isLogin ? (
+          <h1>{state.userInfo.userNm}</h1>
+        ) : (
+          <LoginContainer
+            setIsLogin={actions.setIsLogin}
+            setUserInfo={actions.setUserInfo}
+          />
+        )
       }
     </UserConsumer>
   );
