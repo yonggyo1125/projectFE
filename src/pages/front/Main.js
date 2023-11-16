@@ -1,12 +1,12 @@
-import UserContext from '../../modules/user';
 import LoginContainer from '../../containers/member/LoginContainer';
+import { UserConsumer } from '../../modules/user';
 
 const Main = () => {
   console.log('Main');
   return (
-    <UserContext.Consumer>
+    <UserConsumer>
       {({ isLogin }) => (isLogin ? <h1>메인페이지</h1> : <LoginContainer />)}
-    </UserContext.Consumer>
+    </UserConsumer>
   );
 };
 

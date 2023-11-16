@@ -5,7 +5,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import ErrorPage from './pages/commons/ErrorPage';
-import UserContext from './modules/user';
+import { UserProvider } from './modules/user';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -14,7 +14,7 @@ import './i18n';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <UserContext.Provider value={{ isLogin: false, userInfo: {} }}>
+    <UserProvider>
       <HelmetProvider>
         <BrowserRouter>
           <ErrorPage>
@@ -22,7 +22,7 @@ root.render(
           </ErrorPage>
         </BrowserRouter>
       </HelmetProvider>
-    </UserContext.Provider>
+    </UserProvider>
   </React.StrictMode>,
 );
 
