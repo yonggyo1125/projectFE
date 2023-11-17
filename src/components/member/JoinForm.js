@@ -58,7 +58,7 @@ const FormBox = styled.form`
   }
 `;
 
-const JoinForm = ({ onSubmit, errors }) => {
+const JoinForm = ({ onSubmit, onChange, form, errors }) => {
   const { t } = useTranslation();
 
   errors = errors || {};
