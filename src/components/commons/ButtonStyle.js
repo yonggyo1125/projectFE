@@ -11,9 +11,13 @@ export const BigButton = styled.button`
   width: ${({ width }) => width || '100%'};
   height: ${({ height }) => height || '40px'};
   color: ${({ fcolor }) => (fcolor ? colorNames[fcolor] : white)};
-  border: 0;
+  border: 1px solid ${({ bcolor }) => (bcolor ? colorNames[bcolor] : primary)};
   cursor: pointer;
   border-radius: 3px;
+
+  & + & {
+    margin-left: 5px;
+  }
 `;
 
 export const ButtonGroup = styled.div`
@@ -23,9 +27,5 @@ export const ButtonGroup = styled.div`
   button {
     flex-grow: 1;
     width: 0;
-
-    & + & {
-      margin-left: 5px;
-    }
   }
 `;
