@@ -58,7 +58,7 @@ const FormBox = styled.form`
   }
 `;
 
-const JoinForm = ({ onSubmit, onChange, form, errors }) => {
+const JoinForm = ({ onSubmit, onChange, onToggle, form, errors }) => {
   const { t } = useTranslation();
 
   return (
@@ -66,14 +66,24 @@ const JoinForm = ({ onSubmit, onChange, form, errors }) => {
       <dl>
         <dt>{t('이메일')}</dt>
         <dd>
-          <InputText type="email" name="email" value={form.email} />
+          <InputText
+            type="email"
+            name="email"
+            value={form.email}
+            onChange={onChange}
+          />
           <ErrorMessages errors={errors} field="email" />
         </dd>
       </dl>
       <dl>
         <dt>{t('비밀번호')}</dt>
         <dd>
-          <InputText type="password" name="password" value={form.password} />
+          <InputText
+            type="password"
+            name="password"
+            value={form.password}
+            onChange={onChange}
+          />
           <ErrorMessages errors={errors} field="password" />
         </dd>
       </dl>
@@ -84,6 +94,7 @@ const JoinForm = ({ onSubmit, onChange, form, errors }) => {
             type="password"
             name="confirmPassword"
             value={form.confirmPassword}
+            onChange={onChange}
           />
           <ErrorMessages errors={errors} field="confirmPassword" />
         </dd>
@@ -91,14 +102,24 @@ const JoinForm = ({ onSubmit, onChange, form, errors }) => {
       <dl>
         <dt>{t('회원명')}</dt>
         <dd>
-          <InputText type="text" name="name" value={form.name} />
+          <InputText
+            type="text"
+            name="name"
+            value={form.name}
+            onChange={onChange}
+          />
           <ErrorMessages errors={errors} field="name" />
         </dd>
       </dl>
       <dl>
         <dt>{t('휴대전화번호')}</dt>
         <dd>
-          <InputText type="text" name="mobile" value={form.mobile} />
+          <InputText
+            type="text"
+            name="mobile"
+            value={form.mobile}
+            onChange={onChange}
+          />
           <ErrorMessages errors={errors} field="mobile" />
         </dd>
       </dl>
@@ -106,7 +127,7 @@ const JoinForm = ({ onSubmit, onChange, form, errors }) => {
         {t('회원가입 약관')}
       </SubTitle>
       <pre className="terms">회원 가입약관....</pre>
-      <div className="agree_terms">
+      <div className="agree_terms" onClick={onToggle}>
         {form.agree ? <FiCheckSquare /> : <FiSquare />}
         {t('회원 약관에 동의합니다.')}
       </div>
