@@ -5,7 +5,7 @@ import { FiSquare, FiCheckSquare } from 'react-icons/fi';
 import { ButtonGroup, BigButton } from '../commons/ButtonStyle';
 import sizeNames from '../../styles/sizes';
 import styled from 'styled-components';
-const { small, medium } = sizeNames;
+const { small, medium, big } = sizeNames;
 
 const FormBox = styled.form`
   dl {
@@ -28,12 +28,28 @@ const FormBox = styled.form`
     border-top: 1px solid #d5d5d5;
   }
 
+  dl:last-of-type {
+    margin-bottom: 15px;
+  }
+
   .terms {
     border: 1px solid #d5d5d5;
     height: 150px;
     padding: 10px;
     overflow: auto;
     font-size: ${small};
+  }
+
+  .agree_terms {
+    text-align: center;
+    font-size: ${medium};
+    cursor: pointer;
+    margin: 5px 0 10px;
+
+    svg {
+      font-size: ${big};
+      vertical-align: middle;
+    }
   }
 `;
 
