@@ -24,17 +24,33 @@ const JoinContainer = () => {
         confirmPassword: t('NotBlank_confirmPassword'),
         name: t('NotBlank_name'),
       };
-      const _errors = {};
 
+      const _errors = {};
+      let hasError = false; // 검증 실패 여부
       for (const field in requiredFields) {
         if (!form[field] || !form[field].trim()) {
           _errors[field] = _errors[field] || [];
 
           _errors[field].push(requiredFields[field]);
+
+          hasError = true;
         }
       }
 
-      setErrors((errors) => _errors);
+      /* 약관 동의 체크 */
+      if (!form.agree) {
+        _errors.agree = _errors.agree || [];
+        _errors.push(t('AssertTrue_join_agree'));
+        hasError = true;
+      }
+
+      if (hasError) {
+        setErrors(() => _errors);
+
+        return;
+      }
+
+      // 회원가입 처리
     },
     [form],
   );
