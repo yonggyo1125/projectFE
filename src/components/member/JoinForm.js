@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { SubTitle } from '../commons/TitleStyle';
+import { FiSquare, FiCheckSquare } from 'react-icons/fi';
 
 const JoinForm = () => {
   const { t } = useTranslation();
@@ -36,9 +37,10 @@ const JoinForm = () => {
           <input type="text" name="mobile" />
         </dd>
       </dl>
-      <SubTitle align="center" border_width={1} fsize="normal">
+      <SubTitle align="center" border_width={1}>
         {t('회원가입 약관')}
       </SubTitle>
+      <pre>회원 가입약관....</pre>
     </form>
   );
 };
