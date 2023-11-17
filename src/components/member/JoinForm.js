@@ -40,7 +40,10 @@ const JoinForm = () => {
       <SubTitle align="center" border_width={1}>
         {t('회원가입 약관')}
       </SubTitle>
-      <pre>회원 가입약관....</pre>
+      <pre className="terms">회원 가입약관....</pre>
+      <div className="agree_terms">
+        <FiSquare /> {t('회원 약관에 동의합니다.')}
+      </div>
     </form>
   );
 };

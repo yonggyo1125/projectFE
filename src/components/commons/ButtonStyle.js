@@ -15,3 +15,17 @@ export const BigButton = styled.button`
   cursor: pointer;
   border-radius: 3px;
 `;
+
+export const ButtonGroup = styled.div`
+  width: ${({ width }) => width || 350}px;
+  display: flex;
+  margin: 20px auto;
+  button {
+    flex-grow: 1;
+    width: 0;
+
+    & + & {
+      margin-left: 5px;
+    }
+  }
+`;
