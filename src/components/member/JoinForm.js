@@ -5,6 +5,11 @@ import { FiSquare, FiCheckSquare } from 'react-icons/fi';
 import { ButtonGroup, BigButton } from '../commons/ButtonStyle';
 import sizeNames from '../../styles/sizes';
 import styled from 'styled-components';
+import loadable from '@loadable/component';
+import React from 'react';
+
+const ErrorMessages = loadable(() => import('../commons/ErrorMessages'));
+
 const { small, medium, big } = sizeNames;
 
 const FormBox = styled.form`
@@ -53,39 +58,46 @@ const FormBox = styled.form`
   }
 `;
 
-const JoinForm = () => {
+const JoinForm = ({ onSubmit, errors }) => {
   const { t } = useTranslation();
 
+  errors = errors || {};
+
   return (
-    <FormBox>
+    <FormBox onSubmit={onSubmit}>
       <dl>
         <dt>{t('이메일')}</dt>
         <dd>
           <InputText type="email" name="email" />
+          <ErrorMessages errors={errors} field="email" />
         </dd>
       </dl>
       <dl>
         <dt>{t('비밀번호')}</dt>
         <dd>
           <InputText type="password" name="password" />
+          <ErrorMessages errors={errors} field="password" />
         </dd>
       </dl>
       <dl>
         <dt>{t('비밀번호 확인')}</dt>
         <dd>
           <InputText type="password" name="confirmPassword" />
+          <ErrorMessages errors={errors} field="confirmPassword" />
         </dd>
       </dl>
       <dl>
         <dt>{t('회원명')}</dt>
         <dd>
           <InputText type="text" name="name" />
+          <ErrorMessages errors={errors} field="name" />
         </dd>
       </dl>
       <dl>
         <dt>{t('휴대전화번호')}</dt>
         <dd>
           <InputText type="text" name="mobile" />
+          <ErrorMessages errors={errors} field="mobile" />
         </dd>
       </dl>
       <SubTitle align="center" border_width={1}>
@@ -120,4 +132,4 @@ const JoinForm = () => {
   );
 };
 
-export default JoinForm;
+export default React.memo(JoinForm);
