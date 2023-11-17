@@ -61,42 +61,44 @@ const FormBox = styled.form`
 const JoinForm = ({ onSubmit, onChange, form, errors }) => {
   const { t } = useTranslation();
 
-  errors = errors || {};
-
   return (
     <FormBox onSubmit={onSubmit}>
       <dl>
         <dt>{t('이메일')}</dt>
         <dd>
-          <InputText type="email" name="email" />
+          <InputText type="email" name="email" value={form.email} />
           <ErrorMessages errors={errors} field="email" />
         </dd>
       </dl>
       <dl>
         <dt>{t('비밀번호')}</dt>
         <dd>
-          <InputText type="password" name="password" />
+          <InputText type="password" name="password" value={form.password} />
           <ErrorMessages errors={errors} field="password" />
         </dd>
       </dl>
       <dl>
         <dt>{t('비밀번호 확인')}</dt>
         <dd>
-          <InputText type="password" name="confirmPassword" />
+          <InputText
+            type="password"
+            name="confirmPassword"
+            value={form.confirmPassword}
+          />
           <ErrorMessages errors={errors} field="confirmPassword" />
         </dd>
       </dl>
       <dl>
         <dt>{t('회원명')}</dt>
         <dd>
-          <InputText type="text" name="name" />
+          <InputText type="text" name="name" value={form.name} />
           <ErrorMessages errors={errors} field="name" />
         </dd>
       </dl>
       <dl>
         <dt>{t('휴대전화번호')}</dt>
         <dd>
-          <InputText type="text" name="mobile" />
+          <InputText type="text" name="mobile" value={form.mobile} />
           <ErrorMessages errors={errors} field="mobile" />
         </dd>
       </dl>
@@ -105,7 +107,8 @@ const JoinForm = ({ onSubmit, onChange, form, errors }) => {
       </SubTitle>
       <pre className="terms">회원 가입약관....</pre>
       <div className="agree_terms">
-        <FiSquare /> {t('회원 약관에 동의합니다.')}
+        {form.agree ? <FiCheckSquare /> : <FiSquare />}
+        {t('회원 약관에 동의합니다.')}
       </div>
       <ButtonGroup>
         <BigButton
