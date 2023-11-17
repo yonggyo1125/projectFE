@@ -5,6 +5,7 @@ export const OuterBox = styled.div`
   padding: 50px;
   width: 100%;
   max-width: 900px;
-  margin: 50px 0;
+  min-height: 800px;
+  margin: 50px auto;
   border-radius: 5px;
 `;
