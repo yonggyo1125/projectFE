@@ -1,3 +1,4 @@
+import cookies from 'react-cookies';
 import apiRequest from '../../lib/apiRequest';
 
 /** 로그인 요청 API - 성공시 토큰 발급  */
@@ -29,6 +30,8 @@ export const getUserInfo = () =>
         }
       })
       .catch((err) => {
+        cookies.remove('token');
+
         reject(err);
       });
   });
