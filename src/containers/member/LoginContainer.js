@@ -1,14 +1,23 @@
 import React, { useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import LoginForm from '../../components/member/LoginForm';
 
 const LoginContainer = () => {
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({});
 
+  const { t } = useTranslation();
+
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      console.log(form);
+
+      /* 필수 항목 검증 S */
+      const requiredFields = {
+        email: t('NotBlank_email'),
+        password: t('NotBlank_password'),
+      };
+      /* 필수 항목 검증 E */
     },
     [form],
   );
