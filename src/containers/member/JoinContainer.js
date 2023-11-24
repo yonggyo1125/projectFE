@@ -40,7 +40,7 @@ const JoinContainer = () => {
       /* 약관 동의 체크 */
       if (!form.agree) {
         _errors.agree = _errors.agree || [];
-        _errors.push(t('AssertTrue_join_agree'));
+        _errors.agree.push(t('AssertTrue_join_agree'));
         hasError = true;
       }
 

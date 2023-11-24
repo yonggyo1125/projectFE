@@ -131,6 +131,8 @@ const JoinForm = ({ onSubmit, onChange, onToggle, form, errors }) => {
         {form.agree ? <FiCheckSquare /> : <FiSquare />}
         {t('회원 약관에 동의합니다.')}
       </div>
+      <ErrorMessages errors={errors} field="agree" />
+
       <ButtonGroup>
         <BigButton
           type="submit"
