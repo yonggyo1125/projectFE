@@ -5,15 +5,19 @@ const LoginContainer = () => {
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({});
 
-  const onSubmit = useCallback((e) => {
-    e.preventDefault();
-    console.log(form);
-  }, []);
+  const onSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      console.log(form);
+    },
+    [form],
+  );
 
   const onChange = useCallback((e) => {
+    const target = e.currentTarget;
     setForm((form) => ({
       ...form,
-      [e.currentTarget.name]: e.currentTarget.value,
+      [target.name]: target.value,
     }));
   }, []);
 
