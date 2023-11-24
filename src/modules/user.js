@@ -15,6 +15,10 @@ const UserProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState({});
 
   const updateUserInfo = useCallback(() => {
+    if (isLogin) {
+      return;
+    }
+
     getUserInfo()
       .then((userInfo) => {
         setUserInfo(() => userInfo);
@@ -22,7 +26,7 @@ const UserProvider = ({ children }) => {
         setIsAdmin(userInfo.type === 'ADMIN'); // 관리자 여부
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [isLogin]);
 
   const value = {
     state: { isLogin, isAdmin, userInfo },
