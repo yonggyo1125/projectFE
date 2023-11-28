@@ -3,6 +3,8 @@ import { useContext } from 'react';
 import UserContext from './modules/user';
 
 import FrontLayout from './layouts/front/CommonLayout';
+import AdminLayout from './layouts/admin/CommonLayout';
+
 import NotFound from './pages/commons/NotFound';
 import Main from './pages/front/Main';
 import Login from './pages/front/member/Login';
@@ -26,6 +28,12 @@ const App = () => {
         <Route path="/logout" element={<Logout />} />
         <Route path="/mypage" element={<Mypage />} />
       </Route>
+
+      {/* 관리자 페이지 */}
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<h1>관리자 페이지...</h1>} />
+      </Route>
+
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

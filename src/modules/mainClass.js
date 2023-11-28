@@ -19,8 +19,6 @@ const MainClassProvider = ({ children }) => {
     setMainClass(() => _mainClass);
   }, [location]);
 
-  update();
-
   const value = { mainClass, setMainClass, update };
 
   return (
