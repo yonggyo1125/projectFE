@@ -7,6 +7,7 @@ import NotFound from './pages/commons/NotFound';
 import Main from './pages/front/Main';
 import Login from './pages/front/member/Login';
 import Join from './pages/front/member/Join';
+import Logout from './pages/front/member/Logout';
 
 const App = () => {
   const {
@@ -21,6 +22,7 @@ const App = () => {
         <Route index element={<Main />} />
         <Route path="/join" element={<Join />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
