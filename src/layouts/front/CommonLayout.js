@@ -1,13 +1,11 @@
 import Header from '../../outlines/front/Header';
 import Footer from '../../outlines/front/Footer';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import React, { useContext } from 'react';
+import MainClassContext from '../../modules/mainClass';
 
 const CommonLayout = () => {
-  const location = useLocation();
-  const path = location.pathname.split('/');
-  path.shift();
-  let mainClass = path.join('_');
-  mainClass = mainClass ? `${mainClass}_page` : 'main_page';
+  const { mainClass } = useContext(MainClassContext);
 
   return (
     <>
