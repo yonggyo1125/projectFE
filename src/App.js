@@ -8,6 +8,7 @@ import Main from './pages/front/Main';
 import Login from './pages/front/member/Login';
 import Join from './pages/front/member/Join';
 import Logout from './pages/front/member/Logout';
+import Mypage from './pages/front/member/Mypage';
 
 const App = () => {
   const {
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/join" element={<Join />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/mypage" element={<Mypage />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
