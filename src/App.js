@@ -5,12 +5,17 @@ import UserContext from './modules/user';
 import FrontLayout from './layouts/front/CommonLayout';
 import AdminLayout from './layouts/admin/CommonLayout';
 
+/* 소비자 페이지 */
 import NotFound from './pages/commons/NotFound';
 import Main from './pages/front/Main';
 import Login from './pages/front/member/Login';
 import Join from './pages/front/member/Join';
 import Logout from './pages/front/member/Logout';
 import Mypage from './pages/front/member/Mypage';
+
+/* 관리자 페이지 */
+import AdminMain from './pages/admin/Main';
+import AdminConfig from './pages/admin/Config';
 
 const App = () => {
   const {
@@ -31,7 +36,8 @@ const App = () => {
 
       {/* 관리자 페이지 */}
       <Route path="/admin" element={<AdminLayout />}>
-        <Route index element={<h1>관리자 페이지...</h1>} />
+        <Route index element={<AdminMain />} />
+        <Route path="/config" element={<AdminConfig />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
